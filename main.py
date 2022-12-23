@@ -21,7 +21,7 @@ import cv2
 
 
 
-#Video ~~~~~
+#Video ~~~~
 
 cap = cv2.VideoCapture(0)# arguments accept filename or cam index 0 ("video.png") or(0)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
