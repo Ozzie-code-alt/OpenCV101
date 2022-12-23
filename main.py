@@ -43,5 +43,5 @@ while(cap.isOpened()):# will return false if cap is not opened or not found
     else:
         break
 cap.release() # important since we have to release after reading
-out.release() #release resources for video writer.
+out.release() #release resources for video writer..
 cv2.destroyAllWindows()
