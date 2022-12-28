@@ -177,7 +177,7 @@ import datetime
 #         cv2.imshow('LeftClick', img)
 #         print(points)
 #
-# # img = np.zeros((512,512,3), np.uint8)
+# # img = np.zeros((512,512,3), np.uint8).
 # img = cv2.imread('Images/lena.jpg')
 # cv2.imshow('LeftClick', img)
 # points = []#empty array
