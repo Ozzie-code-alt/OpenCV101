@@ -104,34 +104,86 @@ import datetime
 
 # Showing Date time on videos
 
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+#
+# cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+# cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+#
+# cap.set(3,3000)
+# cap.set(4,3000)
+#
+# print(cap.get(3))
+# print(cap.get(4))
+#
+# while(cap.isOpened()):
+#     ret,frame= cap.read()
+#
+#     if ret == True:
+#
+#         font = cv2.FONT_HERSHEY_SIMPLEX # in using text , instantiate font first
+#         text = "Width: " + str(cap.get(3)) + " Height: " + str(cap.get(4))
+#         date = str(datetime.datetime.now())
+#         frame = cv2.putText(frame,text,(10,50), font, 1, (0,255,0), 2, cv2.LINE_AA )
+#         frame = cv2.putText(frame, date, (700, 50), font, 1, (255, 255, 0), 2, cv2.LINE_AA)# adding date text in video screen
+#         cv2.imshow("Showing Date Time", frame )
+#
+#         if cv2.waitKey(1) & 0xFF == ord ("q"):
+#             break
+#
+#     else:
+#         break
+#
+# cap.release()
+# cv2.destroyAllWindows()
 
-cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
-cap.set(3,3000)
-cap.set(4,3000)
+#Mouse events on OpenCV
 
-print(cap.get(3))
-print(cap.get(4))
+# events = [i for i in dir(cv2) if 'EVENT'in i]#shows all the built in methods in CV2
+# print(events)
 
-while(cap.isOpened()):
-    ret,frame= cap.read()
+# def click_event (event, x,y, flags, param): # specific format for mouse event functions
+#     if event == cv2.EVENT_LBUTTONDOWN:# if left mouse button is clicked
+#         print(x,', ' ,y) # this prints the x and y Axis in console
+#         font = cv2.FONT_HERSHEY_SIMPLEX
+#         str1= str(x) + ', ' +  str(y)  # container for x and y values
+#         cv2.putText(img, str1, (x, y), font, 1, (0, 255, 255), 2)
+#         cv2.imshow('LeftClick', img)
+#     if event == cv2.EVENT_RBUTTONDOWN: #onlcick that will check what color
+#         blue = img[y, x, 0]
+#         green = img[y, x, 1]
+#         red = img[y, x, 2]
+#         font = cv2.FONT_HERSHEY_SIMPLEX
+#         bgr = str(blue) + ', ' + str(green) + ',' + str(red)  # container for x and y values
+#         cv2.putText(img, bgr, (x, y), font, 1, (255, 255, 0), 2)
+#         cv2.imshow('LeftClick', img)
+#
+# # img = np.zeros((512,512,3), np.uint8)
+# img = cv2.imread('Images/lena.jpg')
+# cv2.imshow('LeftClick', img)
+# cv2.setMouseCallback('LeftClick', click_event)#used to call the click_event function
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
-    if ret == True:
 
-        font = cv2.FONT_HERSHEY_SIMPLEX # in using text , instantiate font first
-        text = "Width: " + str(cap.get(3)) + " Height: " + str(cap.get(4))
-        date = str(datetime.datetime.now())
-        frame = cv2.putText(frame,text,(10,50), font, 1, (0,255,0), 2, cv2.LINE_AA )
-        frame = cv2.putText(frame, date, (700, 50), font, 1, (255, 255, 0), 2, cv2.LINE_AA)# adding date text in video screen
-        cv2.imshow("Showing Date Time", frame )
+#More Mouse Events (Lines and Points Specifically)
+#
+# def click_event (event, x,y, flags, param): # specific format for mouse event functions
+#     if event == cv2.EVENT_LBUTTONDOWN:# if left mouse button is clicked
+#         cv2.circle(img, (x, y), 3, (0,255,0), -1) # circle coordinates, remember -1 fills the color
+#         points.append((x, y))# saving the point on which the mouse is clicked in the form of an array
+#         if len(points) >= 2:
+#             cv2.line(img,points[-1],points[-2],(255, 0, 255), 5 )# last 2 elements in the array
+#         cv2.imshow('LeftClick', img)
+#         print(points)
+#
+# # img = np.zeros((512,512,3), np.uint8)
+# img = cv2.imread('Images/lena.jpg')
+# cv2.imshow('LeftClick', img)
+# points = []#empty array
+# print(points)
+# cv2.setMouseCallback('LeftClick', click_event)#used to call the click_event function
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
-        if cv2.waitKey(1) & 0xFF == ord ("q"):
-            break
 
-    else:
-        break
-
-cap.release()
-cv2.destroyAllWindows()
