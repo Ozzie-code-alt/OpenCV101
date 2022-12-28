@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-
+import datetime
 
 #Read an Image~~~~
 
@@ -74,25 +74,60 @@ import numpy as np
 
 
 
-# setting camera parameters
+# # setting camera parameters
+
+# cap = cv2.VideoCapture(0)
+# print(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) # width of frame
+# print(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)) # height of frame
+#
+# cap.set(3, 3000)# arguments (number of property , value)
+# cap.set(4, 3000)
+# # Note this sets the resolution only available for the camera
+# # will only return MAX resolution of cam
+# print(cap.get(3))
+# print(cap.get(4))
+# while(cap.isOpened()):
+#     ret, frame = cap.read() # returns true if there are frames
+#     if ret == True:
+#         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#         cv2.imshow('setting cam parameters', gray)# display
+#
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
+#
+#     else:
+#         break
+#
+# cap.release()
+# cv2.destroyAllWindows()
+
+
+# Showing Date time on videos
 
 cap = cv2.VideoCapture(0)
-print(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) # width of frame
-print(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)) # height of frame
 
-cap.set(3, 3000)# arguments (number of property , value)
-cap.set(4, 3000)
-# Note this sets the resolution only available for the camera
-# will only return MAX resolution of cam
+cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+cap.set(3,3000)
+cap.set(4,3000)
+
 print(cap.get(3))
 print(cap.get(4))
-while(cap.isOpened()):
-    ret, frame = cap.read() # returns true if there are frames
-    if ret == True:
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        cv2.imshow('frame', gray)# display
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+while(cap.isOpened()):
+    ret,frame= cap.read()
+
+    if ret == True:
+
+        font = cv2.FONT_HERSHEY_SIMPLEX # in using text , instantiate font first
+        text = "Width: " + str(cap.get(3)) + " Height: " + str(cap.get(4))
+        date = str(datetime.datetime.now())
+        frame = cv2.putText(frame,text,(10,50), font, 1, (0,255,0), 2, cv2.LINE_AA )
+        frame = cv2.putText(frame, date, (700, 50), font, 1, (255, 255, 0), 2, cv2.LINE_AA)# adding date text in video screen
+        cv2.imshow("Showing Date Time", frame )
+
+        if cv2.waitKey(1) & 0xFF == ord ("q"):
             break
 
     else:
