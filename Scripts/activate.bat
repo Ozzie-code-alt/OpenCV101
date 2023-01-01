@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\Justin Santos\Desktop\OpenCV101"
+set "VIRTUAL_ENV=C:\Users\Justin Santos\Desktop\Sideprojects"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

@@ -54,7 +54,7 @@ import datetime
 
 
 # # Drawing Geometric Shapes on Images
-#
+
 # # img = cv2.imread('Images/lena.jpg',1)
 # img = np.zeros([512,512,3],np.uint8) # using numpy as image with black background
 #
@@ -137,11 +137,11 @@ import datetime
 # cv2.destroyAllWindows()
 
 
-#Mouse events on OpenCV
+# Mouse events on OpenCV
 
 # events = [i for i in dir(cv2) if 'EVENT'in i]#shows all the built in methods in CV2
 # print(events)
-
+#
 # def click_event (event, x,y, flags, param): # specific format for mouse event functions
 #     if event == cv2.EVENT_LBUTTONDOWN:# if left mouse button is clicked
 #         print(x,', ' ,y) # this prints the x and y Axis in console
@@ -187,3 +187,40 @@ import datetime
 # cv2.destroyAllWindows()
 
 
+
+
+# Built in functions cv.split, cv.merge, cv.resice, cv.add
+
+img = cv2.imread("Images/messi5.jpg")
+img2 = cv2.imread("Images/lena.jpg")# using this image to add to messi
+
+
+print(img.shape)# Shape Attribute will return a tuple of rows, columns and channels
+print(img.size)# return a total number of pixels of the image
+print(img.dtype)# return the image data type
+
+b, g, r = cv2.split(img)# splits the image into 3 channels
+
+img = cv2.merge((b,g,r))# to merge the split image.
+
+#ROI: Region of Interest
+
+ball = img[280:340, 330:390] #getting the lips location and putting in an numpy indexing,(upper left, buttom right)
+
+img[273:333, 100:160] = ball  #placing the lips on the desired coordinates on the pic
+
+img = cv2.resize(img, (512, 512))# resize the image
+im2 = cv2.resize(img2, (512,512)) #Param - (Source -  size in tuple)
+
+# dst = cv2.add(img,img2) #pass two array (Imgs) other parameters are set by default check cv documentation
+#PS: error if size of input is not matching , array
+
+
+dst = cv2.addWeighted(img, .3, img2, .7, 0) # add weighted will still combine the two images
+#weight is how the picture shows or like the contrast of the image
+
+cv2.imshow("Messi",  img)
+cv2.imshow("Lenna", img2)
+cv2.imshow("Added", dst)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
